@@ -54,11 +54,6 @@ namespace Click2
         {
             //Cursor.Position = new Cursor.Position(Point(500, 500));
 
-            
-            
-            
-            
-            
             IntPtr calculatorHandle = FindWindow(null, "WoT client");
             //IntPtr calculatorHandle = FindWindow(null, "Калькулятор");
             if (calculatorHandle == IntPtr.Zero)
@@ -68,19 +63,24 @@ namespace Click2
             }
             SetForegroundWindow(calculatorHandle);
 
-           // MouseSimulator.MoveMouseCursor(0, 600);
-            for (int i = 0; i < 5; i++ )
-            {
-                MouseSimulator.MoveMouseCursor(100, 0);
-                MouseSimulator.ClickLeftMouseButton();
-                System.Threading.Thread.Sleep(300);
-            }
-                
+            // MouseSimulator.MoveMouseCursor(0, 600);
+            //for (int i = 0; i < 5; i++ )
+            //{
+            //    MouseSimulator.MoveMouseCursor(100, 0);
+            //    MouseSimulator.ClickLeftMouseButton();
+            //    System.Threading.Thread.Sleep(300);
+            //}
 
-            
+            ControlPanel controlPanel = new ControlPanel();
 
-    
-            //MouseSimulator.ClickRightMouseButton();
+            controlPanel.StartMoving(ControlPanel.MovingDirection.FORWARD);
+            System.Threading.Thread.Sleep(4000);
+            controlPanel.ClickMouseLeftButton();
+            controlPanel.StartMoving(ControlPanel.MovingDirection.LEFT);
+            System.Threading.Thread.Sleep(5000);
+            controlPanel.StopMoving(ControlPanel.MovingDirection.LEFT);
+            //controlPanel.StopMoving(ControlPanel.MovingDirection.FORWARD);
+
 
         }
 
